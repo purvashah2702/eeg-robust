@@ -1,0 +1,3 @@
+_target_: bci.models.eegnet.EEGNetModule
+n_classes: 4
+lr: 0.001

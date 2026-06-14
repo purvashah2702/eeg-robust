@@ -1,0 +1,6 @@
+defaults:
+  - data: bcic4_2a
+  - model: eegnet
+  - trainer: default
+  - _self_
+seed: 42

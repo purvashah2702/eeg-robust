@@ -1,0 +1,11 @@
+pyproject.toml
+src/bci/__init__.py
+src/bci/train.py
+src/bci.egg-info/PKG-INFO
+src/bci.egg-info/SOURCES.txt
+src/bci.egg-info/dependency_links.txt
+src/bci.egg-info/top_level.txt
+src/bci/data/__init__.py
+src/bci/models/__init__.py
+src/bci/utils/__init__.py
+src/bci/utils/seed.py

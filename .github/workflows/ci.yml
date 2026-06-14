@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+jobs:
+  lint-and-test:
+    runs-on: macos-14
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Miniforge
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          activate-environment: bci-env
+          environment-file: environment.yml
+          auto-activate-base: false
+      - name: Install package
+        run: pip install -e .
+      - name: Lint
+        run: ruff check src/ tests/
+      - name: Test
+        run: pytest
