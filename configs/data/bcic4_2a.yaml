@@ -1,0 +1,2 @@
+_target_: bci.data.eeg_datamodule.EEGDataModule
+batch_size: 32
