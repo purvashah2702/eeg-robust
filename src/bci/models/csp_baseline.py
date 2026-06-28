@@ -9,7 +9,7 @@ from sklearn.svm import SVC
 def build_csp_lda(n_components: int = 6):
     """CSP feature extraction -> LDA classifier."""
     return Pipeline([
-        ("csp", CSP(n_components=n_components, reg=None, log=True)),
+        ("csp", CSP(n_components=n_components, reg="ledoit_wolf", log=True)),
         ("lda", LinearDiscriminantAnalysis()),
     ])
 
@@ -17,7 +17,7 @@ def build_csp_lda(n_components: int = 6):
 def build_csp_svm(n_components: int = 6):
     """CSP feature extraction -> SVM classifier."""
     return Pipeline([
-        ("csp", CSP(n_components=n_components, reg=None, log=True)),
+        ("csp", CSP(n_components=n_components, reg="ledoit_wolf", log=True)),
         ("svm", SVC(kernel="rbf", probability=True, random_state=42)),
     ])
 
