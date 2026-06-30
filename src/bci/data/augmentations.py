@@ -61,4 +61,16 @@ class EEGAugmentor:
             x = channel_dropout(x, self.channel_drop_p)
         if np.random.rand() < self.apply_prob:
             x = spec_augment_time_mask(x, self.max_mask_len)
+        if np.random.rand() < self.apply_prob:
+            x = channel_shuffle(x, p=1.0)
         return x
+
+
+def channel_shuffle(x: torch.Tensor, p: float = 0.3) -> torch.Tensor:
+    """Randomly permute a subset of channels — simulates electrode cap misplacement/swap."""
+    n_channels = x.shape[0]
+    if np.random.rand() > p:
+        return x
+    x = x.clone()
+    perm = torch.randperm(n_channels)
+    return x[perm]
